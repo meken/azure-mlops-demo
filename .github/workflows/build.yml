@@ -24,3 +24,8 @@ jobs:
           coverage run --source=src -m pytest --junitxml=junit/test-results.xml
           coverage html
           coverage xml
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: junit/*.xml

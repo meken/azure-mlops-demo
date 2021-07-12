@@ -21,9 +21,8 @@ jobs:
           flake8 . --count --exit-zero --statistics
       - name: Test with coverage
         run: |
-          coverage run --source=src -m pytest --junitxml=junit/test-results.xml
-          coverage html
-          coverage xml
+          coverage run --source=src -m pytest -v --junitxml=junit/test-results.xml
+          coverage report
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
